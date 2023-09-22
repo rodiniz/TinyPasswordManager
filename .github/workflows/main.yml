@@ -9,8 +9,7 @@ jobs:
       matrix:
         build: [
           {name: wailsTest, platform: linux/amd64, os: ubuntu-latest},
-          {name: wailsTest, platform: windows/amd64, os: windows-latest},
-          {name: wailsTest, platform: darwin/universal, os: macos-latest}
+          {name: wailsTest, platform: windows/amd64, os: windows-latest}
         ]
     runs-on: ${{ matrix.build.os }}
     steps:
@@ -21,3 +20,4 @@ jobs:
         with:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
+          
