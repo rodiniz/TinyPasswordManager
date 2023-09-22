@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/gen2brain/beeep"
 )
@@ -30,12 +29,6 @@ func (a *App) startup(ctx context.Context) {
 	ConnectDb()
 	a.ctx = ctx
 }
-
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
-}
-
 func (a *App) AddPassword(val PasswordGenerated) string {
 	result := DB.Db.Create(&val)
 	if result.Error != nil {
