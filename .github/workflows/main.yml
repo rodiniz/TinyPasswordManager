@@ -8,8 +8,8 @@ jobs:
       fail-fast: false
       matrix:
         build: [
-          {name: wailsTest, platform: linux/amd64, os: ubuntu-latest},
-          {name: wailsTest, platform: windows/amd64, os: windows-latest}
+          {name: TinyPasswordManager, platform: linux/amd64, os: ubuntu-latest},
+          {name: TinyPasswordManager, platform: windows/amd64, os: windows-latest}
         ]
     runs-on: ${{ matrix.build.os }}
     steps:
