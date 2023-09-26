@@ -14,9 +14,14 @@ type Dbinstance struct {
 
 type PasswordGenerated struct {
 	gorm.Model
-	Key   string `json:"key,omitempty"`
-	Value string `json:"value,omitempty"`
+	Key      string `json:"key,omitempty"`
+	UserName string `json:"username,omitempty"`
+	Value    string `json:"value,omitempty"`
 }
+
+
+
+
 
 var DB Dbinstance
 
@@ -31,7 +36,10 @@ func ConnectDb() {
 	log.Println("connected")
 	db.Logger = logger.Default.LogMode(logger.Silent)
 	log.Println("running migrations")
-	db.AutoMigrate(&PasswordGenerated{})
+	err = db.AutoMigrate(&PasswordGenerated{})
+	if err != nil {
+		return
+	}
 	//	DB.AutoMigrate(&model.Product{}, &model.User{})
 	DB = Dbinstance{
 		Db: db,

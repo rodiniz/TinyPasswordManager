@@ -39,7 +39,7 @@ func (a *App) AddPassword(val PasswordGenerated) string {
 
 func (a *App) ListPasswords(page int, pageSize int) ListPasswords {
 	var count int64
-	locations := []PasswordGenerated{}
+	var locations []PasswordGenerated
 	var result ListPasswords
 	if err := DB.Db.Model(&locations).Count(&count).Error; err != nil {
 		result.Err = err

@@ -20,4 +20,14 @@ jobs:
         with:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
-          
+          package: false
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Wails Build 
+          path: |
+            */bin/
+            *\bin\*
+      - uses: softprops/action-gh-release@v1     
+        with:
+          files: |
+            */bin/*   

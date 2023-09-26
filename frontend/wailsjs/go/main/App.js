@@ -6,10 +6,6 @@ export function AddPassword(arg1) {
   return window['go']['main']['App']['AddPassword'](arg1);
 }
 
-export function Greet(arg1) {
-  return window['go']['main']['App']['Greet'](arg1);
-}
-
 export function ListPasswords(arg1, arg2) {
   return window['go']['main']['App']['ListPasswords'](arg1, arg2);
 }

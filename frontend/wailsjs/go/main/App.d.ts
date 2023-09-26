@@ -4,8 +4,6 @@ import {main} from '../models';
 
 export function AddPassword(arg1:main.PasswordGenerated):Promise<string>;
 
-export function Greet(arg1:string):Promise<string>;
-
 export function ListPasswords(arg1:number,arg2:number):Promise<main.ListPasswords>;
 
 export function RemovePassword(arg1:number):Promise<void>;
