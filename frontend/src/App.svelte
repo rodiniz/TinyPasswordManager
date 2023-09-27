@@ -14,6 +14,7 @@
    
   });
   async function Add(){
+    debugger;
     const  error= await AddPassword({ username:userName, key, value: valor})
     key=""
     valor=""
@@ -77,25 +78,25 @@
     <Form>
     <FormGroup>
       <Row>
-        <Col xs="2"><Label color="black" for="key">User Name</Label></Col>
+        <Col xs="3"><Label color="black" for="userName">User Name:</Label></Col>
         <Col xs="6">
-          <Input autocomplete="off" required class="input-box" bind:value={userName} id="key" type="text"/> 
+          <Input autocomplete="off" required class="input-box" bind:value={userName} id="userName" type="text"/> 
         
         </Col>
       </Row>
-      <Row>
-        <Col xs="2"><Label color="black" for="key">Site</Label></Col>
+      <Row class="mt-2">
+        <Col xs="3"><Label color="black" for="key">Site</Label></Col>
         <Col xs="6">
           <Input autocomplete="off" required class="input-box" bind:value={key} id="key" type="text"/> 
         
         </Col>
       </Row>
       <Row class="mt-2">
-        <Col xs="2"><Label for="value">Password</Label></Col>
+        <Col xs="3"><Label for="value">Password:</Label></Col>
         <Col xs="6">
           <Input autocomplete="off" required class="input" bind:value={valor} id="value" type="password"/>
         </Col>
-        <Col xs="4">
+        <Col xs="2">
           <Button type="button" id="controlledBtn" on:click={GenerateRandomPassword}><Icon name="clipboard"></Icon></Button>
           <Tooltip placement="right" target="controlledBtn">Generate random password</Tooltip>
         </Col>
@@ -108,12 +109,13 @@
   </Form>
   </Container>
   {#if passwords.length >0}
+  <Container xxl>
     <Table bordered striped >
       <thead>
         <tr>
-          <th colspan="2">Site</th>
-          <th colspan="2">UserName</th>
-          <th colspan="2">Password</th>
+          <th>Site</th>
+          <th>UserName</th>
+          <th >Password</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -121,26 +123,27 @@
         {#each passwords as password, index}
          <tr>         
           <td> {password.key}</td>
-          <td> {password.userName}</td>
-          <td><Button type="button" on:click={()=>Copy(password.userName)}> <Icon name="clipboard"></Icon></Button></td>
+          <td> {password.username}
+          <Button type="button" on:click={()=>Copy(password.username)}> <Icon name="clipboard"></Icon></Button></td>
           <td>
             {#if showPass[index]}
               {password.value}
             {:else}
               {hidechars(password.value)}
             {/if}
-          </td>
-          <td>
+        
              <Button type="button" on:click={()=>showHidePass(index)}><Icon name="eye"></Icon></Button>
              <Button type="button" on:click={()=>Copy(password.value)}><Icon name="clipboard"></Icon></Button>
-            </td>    
-          <td><Button type="button" on:click={() => Delete(password.ID)} ><Icon name="trash" /></Button></td>            
+          </td>    
+          <td>
+            <Button type="button" on:click={() => Delete(password.ID)} ><Icon name="trash" /></Button></td>            
         </tr>		    
 	      {/each}
        
     
       </tbody>
     </Table>
+  </Container>
   {/if}
    
  

@@ -17,7 +17,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "myproject",
+		Title:  "Tiny Password Manager",
 		Width:  724,
 		Height: 568,
 		AssetServer: &assetserver.Options{
