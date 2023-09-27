@@ -4,6 +4,7 @@
   import { AddPassword, ListPasswords,RemovePassword} from "../wailsjs/go/main/App";
   import { ClipboardSetText} from "../wailsjs/runtime/runtime";
   import { Button, Col, Container, Form, FormGroup, Icon, Input, Label, Row, Table, Tooltip } from 'sveltestrap';
+  let userName:string;
   let key: string;
   let valor:string;
   let passwords=[];
@@ -13,7 +14,7 @@
    
   });
   async function Add(){
-    const  error= await AddPassword({ key, value: valor})
+    const  error= await AddPassword({ username:userName, key, value: valor})
     key=""
     valor=""
     if(error!==""){
@@ -70,11 +71,7 @@
 </script>
 <svelte:head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <style>
-    body {
-      color:black;
-    }
- </style>
+ 
 </svelte:head>
 <main>
   
@@ -83,7 +80,14 @@
     <Form>
     <FormGroup>
       <Row>
-        <Col xs="2"><Label color="black" for="key">Name</Label></Col>
+        <Col xs="2"><Label color="black" for="key">User Name</Label></Col>
+        <Col xs="6">
+          <Input autocomplete="off" required class="input-box" bind:value={userName} id="key" type="text"/> 
+        
+        </Col>
+      </Row>
+      <Row>
+        <Col xs="2"><Label color="black" for="key">Site</Label></Col>
         <Col xs="6">
           <Input autocomplete="off" required class="input-box" bind:value={key} id="key" type="text"/> 
         
