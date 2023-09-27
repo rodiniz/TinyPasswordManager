@@ -19,23 +19,17 @@ type PasswordGenerated struct {
 	Value    string `json:"value,omitempty"`
 }
 
-
-
-
-
 var DB Dbinstance
 
 // connectDb
 func ConnectDb() {
 
-	db, err := gorm.Open(sqlite.Open("locations.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("passwords.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database. \n", err)
 	}
-
-	log.Println("connected")
 	db.Logger = logger.Default.LogMode(logger.Silent)
-	log.Println("running migrations")
+
 	err = db.AutoMigrate(&PasswordGenerated{})
 	if err != nil {
 		return

@@ -55,7 +55,7 @@
       generate(specialCharSet,1)+
       generate(lowercaseCharSet,2);
 
-    valor=retVal;    
+      valor=retVal;    
   }
   function hidechars(val :string):string{
     let masked="";
@@ -110,17 +110,18 @@
     <Table bordered striped >
       <thead>
         <tr>
-          <th colspan="2">Name</th>
+          <th colspan="2">Site</th>
+          <th colspan="2">UserName</th>
           <th colspan="2">Password</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         {#each passwords as password, index}
-         <tr>
-          
+         <tr>         
           <td> {password.key}</td>
-          <td><Button type="button" on:click={()=>Copy(password.key)}> <Icon name="clipboard"></Icon></Button></td>
+          <td> {password.userName}</td>
+          <td><Button type="button" on:click={()=>Copy(password.userName)}> <Icon name="clipboard"></Icon></Button></td>
           <td>
             {#if showPass[index]}
               {password.value}
